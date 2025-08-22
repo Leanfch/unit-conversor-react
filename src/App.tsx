@@ -18,6 +18,22 @@ const data = [
 	},
 ];
 
+function celsiusToFahrenheit ( C : number ) {
+    return (C * 9/5) + 32;
+}
+
+function fahrenheitToCelsius( F: number ) {
+    return (F - 32) * 5/9;
+}
+
+function celsiusToKelvin ( C: number ) {
+    return C + 273.15;
+}
+
+function kelvinToCelsius ( K: number ) {
+    return K - 273.15;
+}
+
 function App() {
 	const [unit1, setUnit1] = useState(data[0]);
 	const [unit2, setUnit2] = useState(data[1]);
