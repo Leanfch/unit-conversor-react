@@ -37,6 +37,8 @@ function kelvinToCelsius ( K: number ) {
 function App() {
 	const [unit1, setUnit1] = useState(data[0]);
 	const [unit2, setUnit2] = useState(data[1]);
+    const [value1, setValue1] = useState(0);
+    const [value2, setValue2] = useState(0);
 
 	function handleChange(event: ChangeEvent<HTMLSelectElement>) {
 		setUnit1(data.find((item) => item.name === event.target.value) ?? data[0]);
@@ -45,6 +47,14 @@ function App() {
 	function handleChange2(event: ChangeEvent<HTMLSelectElement>) {
 		setUnit2(data.find((item) => item.name === event.target.value) ?? data[0]);
 	}
+
+    function handleChangeValue1(event: ChangeEvent<HTMLInputElement>) {
+		setValue1(Number(event.target.value))
+    }
+
+    function handleChangeValue2(event: ChangeEvent<HTMLInputElement>) {
+		setValue2(Number(event.target.value))
+    }
 
 	return (
 		<section className="bg-teal-950 w-screen h-screen flex flex-col items-center justify-center">
@@ -72,10 +82,11 @@ function App() {
 						<input
 							type="number"
 							placeholder="0"
-							className="bg-gray-100 text-gray-800 placeholder:text-gray-600 p-2 rounded-md mx-5"
+                            value={value1}
+                            onChange={handleChangeValue1}
+							className="bg-gray-100 text-gray-800 placeholder:text-gray-600 p-2 rounded-md ml-5 mr-2"
 						/>
 						<span>{unit1.unit}</span>
-						{/* DEBE SER DINAMICO */}
 					</div>
 					<div>
 						<select
@@ -96,10 +107,11 @@ function App() {
 						<input
 							type="number"
 							placeholder="0"
-							className="bg-gray-100 text-gray-800 placeholder:text-gray-600 p-2 rounded-md mx-5"
+                            value={value2}
+                            onChange={handleChangeValue2}
+							className="bg-gray-100 text-gray-800 placeholder:text-gray-600 p-2 rounded-md ml-5 mr-2"
 						/>
 						<span>{unit2.unit}</span>
-						{/* DEBE SER DINAMICO */}
 					</div>
 				</section>
 			</article>
