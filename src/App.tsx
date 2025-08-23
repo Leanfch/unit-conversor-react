@@ -34,6 +34,35 @@ function kelvinToCelsius ( K: number ) {
     return K - 273.15;
 }
 
+function unitConverter( value: number, fromUnit: string, toUnit: string ) {
+    let resultInCelsius: number;
+    let result: number;
+    
+    switch (fromUnit) {
+        case 'fahrenheit':
+            resultInCelsius = fahrenheitToCelsius(value);
+        break
+        case 'kelvin':
+            resultInCelsius = kelvinToCelsius(value);
+        break
+        default:
+            resultInCelsius = value;
+    }
+
+    switch (toUnit) {
+        case 'fahrenheit':
+             result = celsiusToFahrenheit(resultInCelsius)
+        break;
+        case 'kelvin':
+            result = celsiusToKelvin(resultInCelsius)
+        break;
+        default:
+            result = resultInCelsius;
+    }
+
+    return result;
+}
+
 function App() {
 	const [unit1, setUnit1] = useState(data[0]);
 	const [unit2, setUnit2] = useState(data[1]);
